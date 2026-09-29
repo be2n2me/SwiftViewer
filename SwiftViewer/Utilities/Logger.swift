@@ -2,7 +2,7 @@
 //  Logger.swift
 //  SwiftViewer
 //
-//  Created by Claude on 2025/08/21.
+//  Created by be2n2me.
 //
 
 import Foundation
@@ -29,7 +29,7 @@ enum LogLevel: Int {
 final class Logger: @unchecked Sendable {
     static let shared = Logger()
 
-    private let subsystem = Bundle.main.bundleIdentifier ?? "oshiire.SwiftViewer"
+    private let subsystem = Bundle.main.bundleIdentifier ?? "be2n2me.SwiftViewer"
     private let osLog: OSLog
 
     init() {

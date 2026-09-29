@@ -1,6 +1,6 @@
 # SwiftViewer
 
-[![Swift CI](https://github.com/sho7650/SwiftViewer/actions/workflows/swift.yml/badge.svg)](https://github.com/sho7650/SwiftViewer/actions/workflows/swift.yml)
+[![Swift CI](https://github.com/be2n2me/SwiftViewer/actions/workflows/swift.yml/badge.svg)](https://github.com/be2n2me/SwiftViewer/actions/workflows/swift.yml)
 [![Swift](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
 [![Platform](https://img.shields.io/badge/Platform-macOS%2026.0%2B-blue.svg)](https://developer.apple.com/macos/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -55,12 +55,12 @@ A modern, high-performance photo viewer for macOS built with Swift 6 and SwiftUI
 ### Installation
 
 #### Option 1: Download Release (Coming Soon)
-Download the latest release from the [Releases](https://github.com/sho7650/SwiftViewer/releases) page.
+Download the latest release from the [Releases](https://github.com/be2n2me/SwiftViewer/releases) page.
 
 #### Option 2: Build from Source
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sho7650/SwiftViewer.git
+   git clone https://github.com/be2n2me/SwiftViewer.git
    cd SwiftViewer
    ```
 
@@ -244,7 +244,7 @@ See [docs/RELEASING.md](docs/RELEASING.md) for the release process.
 
 ### Debug Logging
 ```bash
-defaults write oshiire.SwiftViewer debugLoggingEnabled -bool YES
+defaults write be2n2me.SwiftViewer debugLoggingEnabled -bool YES
 ```
 The logging level (Debug / Info / Warning / Error) can also be set in Preferences.
 
@@ -261,14 +261,14 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 ## 🙏 Acknowledgments
 
 - Built with [SwiftUI](https://developer.apple.com/xcode/swiftui/)
-- Developed using [Claude Code](https://claude.ai/code) assistance
+- Developed using Qoder assistance
 - Inspired by the need for a fast, clean macOS photo viewer
 
 ## 📞 Support
 
-- 🐛 [Report bugs](https://github.com/sho7650/SwiftViewer/issues)
-- 💡 [Request features](https://github.com/sho7650/SwiftViewer/issues)
-- ❓ [Ask questions](https://github.com/sho7650/SwiftViewer/discussions)
+- 🐛 [Report bugs](https://github.com/be2n2me/SwiftViewer/issues)
+- 💡 [Request features](https://github.com/be2n2me/SwiftViewer/issues)
+- ❓ [Ask questions](https://github.com/be2n2me/SwiftViewer/discussions)
 
 ---
 

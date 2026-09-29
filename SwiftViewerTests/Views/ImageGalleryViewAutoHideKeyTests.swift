@@ -2,7 +2,7 @@
 //  ImageGalleryViewAutoHideKeyTests.swift
 //  SwiftViewerTests
 //
-//  Created by Claude on 2026/08/13.
+//  Created by be2n2me.
 //
 
 import XCTest

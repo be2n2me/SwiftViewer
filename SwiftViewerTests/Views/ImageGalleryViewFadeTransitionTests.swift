@@ -2,7 +2,7 @@
 //  ImageGalleryViewFadeTransitionTests.swift
 //  SwiftViewerTests
 //
-//  Created by Claude on 2025/08/31.
+//  Created by be2n2me.
 //
 
 import XCTest

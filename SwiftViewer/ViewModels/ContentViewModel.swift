@@ -2,7 +2,7 @@
 //  ContentViewModel.swift
 //  SwiftViewer
 //
-//  Created by Claude on 2025/08/26.
+//  Created by be2n2me.
 //
 
 import SwiftUI

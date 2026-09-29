@@ -1,336 +1,147 @@
-# Swift Photos 要件
+# Swift Photos 需求规格
 
-## 機能要件
+## 功能需求
 
-### 主機能
+### 主要功能
 
-- フォルダ単位で画像を一枚ずつ表示する機能を持つこと (must)
-  - ウィンドウ枠全てを画像の表示領域として利用できること (should)
-  - 画像の表示されない領域は、画像の blur がかかること (nice to have)
-  - 対象の画像ファイルは jpg, heic, gif を対象とする (must)
-  - gif は Animation GIF へ対応すること (should)
-- スライドショーを実現できること (must)
-  - スライドショーの切替時間は 1,2,3,5,10,20,30,60,120,300 程度の間隔で設定ができること (must)
-  - Repeat 機能で画像の終わりまできたら先頭へ戻る機能を on/off できること (should)
-- 戻る/進む と、スライドショーの再生/停止の Toggle ボタンを持つ小さいコントローラーで画像の操作が出来ること (must)
-  - コントローラーは背後の画像を blur しつつ透過できること (nice to have)
-  - マウスやキーボードの操作がない時は非表示となること (should)
-  - プログレスバーを持ち、プログレスバーをクリックするとその位置の画像を表示できる (nice to have)
-- 左右上下のカーソルキーの入力により閲覧する画像の進めたり戻せること (must)
-- F キーでフルスクリーンと標準ウィンドウを Toggle 操作できること (must)
-- 画像表示順番を昇順、降順でソートできること (must)
-  - ファイル名のアルファベット順
-  - ファイルの作成日順
-  - ファイルのサイズ順
-  - ランダム (フォルダを指定するたびに毎回ランダムシードが変更される)
-- 上記の機能を利用できる Window Menu を持つこと (must)
-- 上記の設定が可能な設定ウィンドウを “⌘,” や Window Menu から実行できること (must)
-  - 設定は動的に変更されること (should)
+- 具有按文件夹逐张显示图像的功能(must)
+  - 可将整个窗口边框用作图像显示区域(should)
+  - 未显示图像的区域应显示图像的模糊效果(nice to have)
+  - 目标图像文件为 jpg、heic、gif(must)
+  - gif 需支持动画 GIF(should)
+- 可实现幻灯片放映(must)
+  - 幻灯片切换时间可设置为 1,2,3,5,10,20,30,60,120,300 左右的间隔(must)
+  - 可通过 Repeat 功能开关「到达图像末尾时返回开头」(should)
+- 可通过带有「后退/前进」与「幻灯片播放/停止」切换按钮的小型控制器操作图像(must)
+  - 控制器应在模糊背后图像的同时保持半透明(nice to have)
+  - 无鼠标或键盘操作时应自动隐藏(should)
+  - 带有进度条,点击进度条可显示该位置的图像(nice to have)
+- 可通过左右上下方向键输入前后浏览图像(must)
+- 可通过 F 键在全屏与标准窗口之间切换(must)
+- 可按升序、降序对图像显示顺序进行排序(must)
+  - 按文件名字母顺序
+  - 按文件创建日期顺序
+  - 按文件大小顺序
+  - 随机(每次指定文件夹时随机种子都会改变)
+- 具有可使用上述功能的 Window Menu(must)
+- 可通过「⌘,」或 Window Menu 打开设置窗口,对上述内容进行设置(must)
+  - 设置应动态生效(should)
 
-### UI/UX に関する詳細機能
+### UI/UX 相关详细功能
 
-- 画像のリサイズ方法をユーザが選択可能 (nice to have)
+- 用户可选择图像缩放方式(nice to have)
 
-  - Fit（アスペクト比維持で全体表示） (must)
+  - Fit(保持宽高比整体显示)(must)
 
-  - Fill（画面を埋める、クロップあり）
+  - Fill(填满画面,可裁剪)
 
-  - Actual Size（実サイズ表示）
+  - Actual Size(实际大小显示)
 
-- ズーム機能 (nice to have)
-  - 将来実装可能であれば良い
-    - ピンチジェスチャー対応
-    - ズームレベルの範囲（10%-1000%）
+- 缩放功能(nice to have)
+  - 未来可实现的即可
+    - 支持捏合手势
+    - 缩放级别范围(10%-1000%)
 
-### エラーハンドリング
+### 错误处理
 
-- 破損した画像ファイルはスキップする
-- アクセス権限のないフォルダは権限要求する
-- ネットワークドライブの画像も対応する
-- 画像が 0 枚のフォルダは表示しない
+- 跳过损坏的图像文件
+- 对无访问权限的文件夹请求权限
+- 也支持网络驱动器上的图像
+- 不显示图像数量为 0 的文件夹
 
-### データの永続化
+### 数据持久化
 
-- 設定の保存先：UserDefalt に保存すること
-- 最後に見た画像の位置を記憶する (ランダムの場合は保持しない)
-- お気に入り/レーティング機能は将来実装するかも知れない
-- 閲覧履歴は 10 件から 100 件保持できること(設定で変更可能)
+- 设置的保存位置:保存到 UserDefault(即 UserDefaults)
+- 记住最后查看的图像位置(随机模式下不保留)
+- 收藏/评分功能未来可能实现
+- 浏览历史可保留 10 至 100 条(可通过设置更改)
 
-### セキュリティ要件
+### 安全需求
 
-- App Sandbox を有効にする
-- 必要な Entitlements：
+- 启用 App Sandbox
+- 所需 Entitlements:
   □ com.apple.security.files.user-selected.read-only
   □ com.apple.security.files.downloads.read-write
   □ com.apple.security.files.bookmarks.app-scope
-- Mac App Store での配布予定あり
+- 计划在 Mac App Store 发布
 
-### 国際化/アクセシビリティ
+### 国际化/无障碍
 
-- 対応言語: 日本語と英語、将来的にはスペインやフランス語、中国語などにも拡張可能な仕様とする
-- VoiceOver 対応は不要
-- キーボードのみでの完全操作が必要
-- ハイコントラストモード対応
+- 支持语言:日语和英语,规格上应支持未来扩展到西班牙语、法语、中文等
+- 不需要 VoiceOver 支持
+- 必须支持仅用键盘完成全部操作
+- 支持高对比度模式
 
-## 機能要求 (将来要件)
+## 功能要求(未来需求)
 
-- 追加画像ファイルの対応
-  - RAW ファイルへの対応
-  - EXIF 情報の表示 (on/off が可能)
-  - mac で標準で対応していない画像フォーマットを変換して表示できる機能をプラグインできること
-  - プラグイン可能な Interface を想定しておくこと
-- Traisition 機能の対応
-  - 画像の切替時にエフェクトを利用できるよう拡張できること
-  - エフェクト機能は、プラグインで増やすことができること
-  - プラグイン可能な Interface と仕様を想定しておくこと
+- 支持更多图像文件
+  - 支持 RAW 文件
+  - 显示 EXIF 信息(可开关)
+  - 可通过插件转换并显示 Mac 原生不支持的图像格式
+  - 需预先设想可插拔的 Interface
+- 支持 Transition(过渡)功能
+  - 图像切换时可扩展使用特效
+  - 特效功能可通过插件增加
+  - 需预先设想可插拔的 Interface 与规范
 -
 
-## 非機能要件
+## 非功能需求
 
-- パフォーマンス要求
-  - 10 万枚以上の画像を表示する能力をもつこと
-    - 想定する平均的な画像サイズは 5MB 未満
-      - ただし最大で 50MB 程度のファイルであっても表示可能な機能を有すること
-    - メモリ使用量の上限目標
-      - ユーザーが設定できること
-      - 設定ウィンドウから設定する
-      - ファイルの枚数と利用可能なメモリ状況からある程度キャッシュサイズなどを自動で割り当てられることが望ましい
-      - 必要に応じてキャッシュ機能を持つライブラリの利用も想定すること
-      - キャッシュサイズを動的に制御して稼働することを前提とする
-    - プリロード戦略
-      - 10 枚から 1,000 枚をユーザーが設定可能
-      - メモリ状況に合わせて基本的には自動的に動的に設定される
-      - 非同期で読み込まれる
-    - サムネイル生成は不要
-    - 全ての画像データを読み込むのではなく、割り当てられたメモリや画像の枚数に応じて変動するキャッシュ機能を持ち、高速な画像表示を実装する。キャッシュされていれば 10ms 前後で表示できること
+- 性能要求
+  - 具备显示 10 万张以上图像的能力
+    - 假设的平均图像大小低于 5MB
+      - 但即使是最大约 50MB 的文件也应具备显示能力
+    - 内存使用量上限目标
+      - 可由用户设置
+      - 从设置窗口设置
+      - 最好能根据文件数量与可用内存情况自动分配一定程度的缓存大小
+      - 根据需要可考虑使用具备缓存功能的库
+      - 前提是动态控制缓存大小运行
+    - 预加载策略
+      - 用户可设置 10 张至 1,000 张
+      - 基本上根据内存情况自动动态设置
+      - 异步加载
+    - 不需要生成缩略图
+    - 不加载全部图像数据,而是拥有随分配的内存与图像数量变化的缓存功能,实现高速图像显示。缓存命中时约 10ms 内显示
 
-## 技術要件
+## 技术需求
 
-- Xcode16/Swift6/SwiftUI の仕様に準ずること
-- Mac の arm アプリケーションであること
-- Mac version 14+ 対応
-- MVVM またはそれに準ずる構造であること
-- 一つの機能もしくは一つの責任分解点が、一つのファイル内で完結すること
-- 設定によって debug log を出力する機能を持つこと
-- 機能の追加や改修が、他のファイルへの影響が最小化する構造となること
-- 影響を抑制する為の抽象化層やデザインパターンを採用しても良い
-- 一つのファイルのサイズは人間が見通せる行数とすること
+- 遵循 Xcode16/Swift6/SwiftUI 的规范
+- 为 Mac 的 arm 应用程序
+- 支持 Mac version 14+
+- 采用 MVVM 或与之相当的结构
+- 一个功能或一个职责分解点应在一个文件内完成
+- 具备根据设置输出 debug log 的功能
+- 功能添加或修改对其它文件的影响应为最小化的结构
+- 可采用用于抑制影响的抽象层或设计模式
+- 单个文件的大小应为人类可通读的行数
 
-## プロジェクト要件
+## 项目需求
 
-- アプリ名: Swift Vierwer
-- Bundle Identifier: oshiire.SwiftViewer
-- 開発チーム設定: Takashi Abe
-- Code Signing の方式: Development
-- 最小デプロイメントターゲット macOS 15.0 以降
-- テスト駆動仕様に従うこと
-- 作業は step by step で一つのファイル、又は一つの機能、一つのバグ修正の単位で進めること
-  - コンパイルでのビルドエラーなく実行可能な最小限の単位を選択すること
-- git と github を利用してコードを管理する
-  - 各単位では git の branch を作成して commit を行い、GitHub へ push して Pull Request を上げること
-  - Pull Request の内容を品質管理の担当者が確認し、merge を行う
-  - Merge された branch から次の作業を始めること
-  - git の branch 戦略は GitHub Flow に従うこと
-- cipher mcp を必ず利用すること
-  - ファイルの read/write や検索などの主体は serena を利用すること
-  - 計画、設計内容、実行の結果などの記録は全て cipher を利用すること
-
-#### 📝 Cipher MCP の活用戦略
-
-##### **1. プロジェクト初期設定での指示**
-
-````markdown
-Claude Code への初期指示例：
-
-# SwiftViewer プロジェクトの初期化
-
-## Cipher MCP での記録管理
-
-以下の内容を Cipher MCP を使って記録・管理してください：
-
-1. プロジェクト構造の記録
-
-   - cipher_upsert_memory でプロジェクト構造を "project_structure" として保存
-   - アーキテクチャ決定事項を "architecture_decisions" として記録
-
-2. 開発進捗の追跡
-
-   - 各機能実装前に cipher_upsert_memory で実装計画を記録
-   - 実装完了後に結果と学んだことを更新
-
-3. テスト戦略の記録
-   - TDD サイクルごとに "test*cycle*[番号]" として記録
-   - テストカバレッジの推移を "test_coverage_history" に記録
-
-## 具体的な使用例
-
-### 新機能開発時
-
-```bash
-# 1. 計画段階
-cipher_upsert_memory(
-  key: "feature_image_cache_plan",
-  value: {
-    "目的": "画像キャッシュ機能の実装",
-    "設計": "LRUキャッシュ、最大100枚",
-    "テスト計画": "メモリ使用量、パフォーマンステスト",
-    "開始日時": "2024-01-XX"
-  }
-)
-
-# 2. 実装後
-cipher_upsert_memory(
-  key: "feature_image_cache_result",
-  value: {
-    "実装内容": "NSCacheベースの実装",
-    "テスト結果": "10ms以下の読み込み達成",
-    "課題": "メモリ警告時の処理追加必要",
-    "完了日時": "2024-01-XX"
-  }
-)
-```
-````
-
-##### **2. アーキテクチャ設計の記録**
-
-```markdown
-## アーキテクチャ設計の記録指示
-
-Cipher MCP で以下の構造で設計を記録してください：
-
-cipher_upsert_memory(
-key: "architecture_mvvm",
-value: {
-"pattern": "MVVM + Repository",
-"layers": {
-"presentation": ["Views", "ViewModels"],
-"domain": ["Models", "UseCases"],
-"data": ["Repositories", "DataSources"]
-},
-"dependencies": {
-"DI_container": "Protocol-based injection",
-"async_handling": "async/await + Combine"
-}
-}
-)
-
-各モジュールの責務を記録：
-cipher_upsert_memory(
-key: "module_responsibilities",
-value: {
-"ImageLoader": "画像の非同期読み込み",
-"ImageCache": "メモリキャッシュ管理",
-"FileManager": "ファイルシステムアクセス",
-"SettingsManager": "UserDefaults 管理"
-}
-)
-```
-
-##### **3. TDD サイクルの記録**
-
-```markdown
-## TDD サイクルごとの記録
-
-各テストサイクルで以下を記録：
-
-# RED Phase
-
-cipher_upsert_memory(
-key: "tdd_cycle_001_red",
-value: {
-"feature": "画像読み込み",
-"test_name": "test_loadImage_success",
-"expected": "URL から画像を読み込める",
-"status": "FAILING"
-}
-)
-
-# GREEN Phase
-
-cipher_upsert_memory(
-key: "tdd_cycle_001_green",
-value: {
-"implementation": "ImageLoader.loadImage()実装",
-"code_location": "Sources/ImageLoader.swift",
-"status": "PASSING"
-}
-)
-
-# REFACTOR Phase
-
-cipher_upsert_memory(
-key: "tdd_cycle_001_refactor",
-value: {
-"changes": ["エラーハンドリング追加", "async/await 化"],
-"performance": "読み込み時間: 50ms → 30ms",
-"status": "COMPLETED"
-}
-)
-```
-
-##### **4. Git ワークフローとの連携**
-
-```markdown
-## Git 操作との連携記録
-
-# ブランチ作成時
-
-cipher_upsert_memory(
-key: "branch_feature_image_cache",
-value: {
-"branch_name": "feature/image-cache",
-"created_from": "main",
-"purpose": "画像キャッシュ機能の実装",
-"pr_number": null
-}
-)
-
-# PR 作成時
-
-cipher_upsert_memory(
-key: "pr_123",
-value: {
-"branch": "feature/image-cache",
-"files_changed": 15,
-"tests_added": 8,
-"coverage_delta": "+5%",
-"review_status": "pending"
-}
-)
-```
-
-##### **5. 継続的な設計判断の記録**
-
-```markdown
-## 設計判断の記録（ADR: Architecture Decision Records 形式）
-
-cipher_upsert_memory(
-key: "adr_001_cache_strategy",
-value: {
-"title": "画像キャッシュ戦略の選択",
-"context": "10 万枚の画像を扱う必要がある",
-"decision": "NSCache とディスクキャッシュの併用",
-"consequences": {
-"positive": ["高速アクセス", "メモリ効率"],
-"negative": ["実装の複雑化"],
-"mitigation": ["抽象化層の導入"]
-},
-"date": "2024-01-XX"
-}
-)
-```
-
+- 应用名: Swift Vierwer(原文如此)
+- Bundle Identifier: be2n2me.SwiftViewer
+- 开发团队设置: be2n2me
+- Code Signing 方式: Development
+- 最小部署目标 macOS 15.0 及以上
+- 遵循测试驱动规范
+- 以 step by step 方式,按「一个文件」或「一个功能」、「一个 bug 修复」为单位推进工作
+  - 选择无编译构建错误、可执行的最小单位
+- 使用 git 和 github 管理代码
+  - 每个单位创建 git 的 branch 并 commit,push 到 GitHub 并提交 Pull Request
+  - Pull Request 的内容由质量管理负责人确认后进行 merge
+  - 从已 Merge 的 branch 开始下一项工作
+  - git 的 branch 策略遵循 GitHub Flow
 ### CI/CD
 
-- GitHub のリポジトリ: https://github.com/sho7650/SwiftViewer
-- CI/CD ツール: Github Actions
-- コードカバレッジのしきい値: 75% 以上
-- SwiftLint を利用する
+- GitHub 仓库: https://github.com/be2n2me/SwiftViewer
+- CI/CD 工具: Github Actions
+- 代码覆盖率阈值: 75% 以上
+- 使用 SwiftLint
 
 ```yaml
-# .swiftlint.yml - 画像閲覧アプリ向け推奨設定
+# .swiftlint.yml - 面向图像浏览应用的推荐设置
 
-# 基本ルール
+# 基本规则
 included:
   - Sources
   - Tests
@@ -340,9 +151,9 @@ excluded:
   - DerivedData
   - ${PODS_ROOT}
 
-# 有効にすべきルール
+# 应启用的规则
 opt_in_rules:
-  # コード品質
+  # 代码质量
   - empty_count
   - empty_string
   - first_where
@@ -351,39 +162,39 @@ opt_in_rules:
   - contains_over_filter_is_empty
   - flatmap_over_map_reduce
 
-  # 可読性向上
+  # 可读性提升
   - multiline_parameters
   - multiline_function_chains
   - vertical_parameter_alignment_on_call
   - closure_end_indentation
 
-  # SwiftUI特有
+  # SwiftUI 特有
   - multiple_closures_with_trailing_closure
-  - modifier_order # SwiftUIのmodifier順序
+  - modifier_order # SwiftUI 的 modifier 顺序
 
   # 安全性
-  - force_unwrapping # ! の使用を警告
+  - force_unwrapping # 警告使用 !
   - implicitly_unwrapped_optional
   - weak_delegate
 
-  # テスト関連
+  # 测试相关
   - quick_discouraged_call
   - single_test_class
 
-# カスタムルール
+# 自定义规则
 custom_rules:
   no_print:
-    name: "Print文の使用禁止"
+    name: "禁止使用 Print 语句"
     regex: '\bprint\('
     message: "Use Logger instead of print()"
     severity: warning
 
   todo_fixme:
-    name: "TODO/FIXMEにチケット番号必須"
+    name: "TODO/FIXME 必须带工单编号"
     regex: '(//|#|\\*)\s*(TODO|FIXME)(?!.*#\d+)'
-    message: "TODOとFIXMEにはチケット番号を含めてください"
+    message: "TODO 和 FIXME 请包含工单编号"
 
-# 設定値
+# 配置值
 line_length:
   warning: 120
   error: 200
@@ -408,9 +219,9 @@ cyclomatic_complexity:
 
 #### GitHub Branch Protection Rules
 
-main ブランチの保護設定:
+main 分支的保护设置:
 
-✅ 必須設定:
+✅ 必须设置:
 
 - Require a pull request before merging
 
@@ -426,82 +237,82 @@ main ブランチの保護設定:
   - Require branches to be up to date
 
 - Require conversation resolution
-- Require linear history (rebase を強制)
+- Require linear history(强制 rebase)
 
-⭐ 推奨設定:
+⭐ 推荐设置:
 
-- Include administrators (管理者も例外なし)
-- Restrict who can push (特定メンバーのみ)
+- Include administrators(管理员也不例外)
+- Restrict who can push(仅限特定成员)
 
-🔧 開発効率のための設定:
+🔧 提升开发效率的设置:
 
-- Allow auto-merge (CI 通過後自動マージ)
+- Allow auto-merge(CI 通过后自动合并)
 - Automatically delete head branches
 
-## テスト駆動仕様
+## 测试驱动规范
 
-I'll search for the latest best practices for Swift/SwiftUI testing and TDD approaches for macOS app development.
+我将搜索 Swift/SwiftUI 测试与 TDD 方法在 macOS 应用开发中的最新最佳实践。
 
-Based on my research, here's a concise prompt for Claude Code to implement TDD best practices for Swift/SwiftUI macOS app development:
+基于我的研究,以下是简洁提示词,用于在 Swift/SwiftUI macOS 应用开发中实施 TDD 最佳实践:
 
-Create a Swift/SwiftUI macOS app with TDD approach following these requirements:
+请按照以下要求,以 TDD 方式创建 Swift/SwiftUI macOS 应用:
 
-### Architecture
+### 架构
 
-- MVVM with protocol-based dependency injection
+- MVVM 与基于协议的依赖注入
 
-- ViewModels as @Observable (Swift 5.9+) or ObservableObject
+- ViewModel 使用 @Observable(Swift 5.9+)或 ObservableObject
 
-- Repository pattern for data layer
+- 数据层采用 Repository 模式
 
-- Separate protocols for all dependencies (networking, persistence, utilities)
+- 为所有依赖(网络、持久化、工具类)分离协议
 
-### Testing Structure
+### 测试结构
 
-- Organize tests mirroring source: Features/FeatureName/Tests/
+- 测试组织与源码镜像: Features/FeatureName/Tests/
 
-- Use XCTest with async/await support
+- 使用支持 async/await 的 XCTest
 
-- Follow AAA pattern (Arrange-Act-Assert)
+- 遵循 AAA 模式(Arrange-Act-Assert)
 
-- Test naming: test_methodName_expectedBehavior_whenCondition()
+- 测试命名: test_methodName_expectedBehavior_whenCondition()
 
-### TDD Workflow
+### TDD 工作流
 
-1. Write failing test first
-2. Implement minimal code to pass
-3. Refactor with confidence
-4. Each commit should have test + implementation
+1. 先写失败测试
+2. 实现最小化代码使其通过
+3. 自信地重构
+4. 每次 commit 都应包含测试 + 实现
 
-### Key Components to Include
+### 应包含的关键组件
 
-- Protocol-based NetworkService with URLSession implementation
+- 基于协议的 NetworkService,使用 URLSession 实现
 
-- Mock/Stub implementations for testing
+- 用于测试的 Mock/Stub 实现
 
-- ViewModel with @Published properties
+- 带 @Published 属性的 ViewModel
 
-- Repository with async throws methods
+- 带 async throws 方法的 Repository
 
-- Error handling with custom domain errors
+- 使用自定义领域错误的错误处理
 
-- Deterministic time/scheduler abstractions
+- 确定性的时间/调度器抽象
 
-### Testing Requirements
+### 测试要求
 
-- Unit tests for ViewModels (business logic)
+- ViewModel 的单元测试(业务逻辑)
 
-- Integration tests for Repository + Network
+- Repository + Network 的集成测试
 
-- Use TestScheduler for Combine, TestClock for async
+- Combine 使用 TestScheduler,async 使用 TestClock
 
-- No sleep(), use XCTExpectation or async/await
+- 不使用 sleep(),使用 XCTExpectation 或 async/await
 
-- Mock external dependencies, test doubles for protocols
+- Mock 外部依赖,为协议提供测试替身
 
-- Aim for 80%+ coverage on business logic
+- 业务逻辑覆盖率达到 80% 以上
 
-### Example Structure
+### 示例结构
 
 ```swift
 // Protocol
@@ -548,20 +359,20 @@ final class UserViewModelTests: XCTestCase {
 }
 ```
 
-#### **SwiftUI View Testing**
+#### **SwiftUI View 测试**
 
-- Keep Views thin, test ViewModels instead
-- Use ViewInspector for SwiftUI view testing if needed
-- Environment injection for integration tests
-- Snapshot tests for critical UI components
+- 保持 View 轻量,改为测试 ViewModel
+- 需要时使用 ViewInspector 进行 SwiftUI View 测试
+- 集成测试使用环境注入
+- 关键 UI 组件使用快照测试
 
-#### **Best Practices**
+#### **最佳实践**
 
-- One assertion per test preferred
-- Test behavior, not implementation
-- Use factory methods for test data
-- Isolate tests (no shared state)
-- Fast feedback loop (<100ms per unit test)
-- CI runs: Unit → Integration → UI (smoke only)
+- 优先每个测试一个断言
+- 测试行为,而非实现
+- 使用工厂方法生成测试数据
+- 隔离测试(无共享状态)
+- 快速反馈循环(每个单元测试 <100ms)
+- CI 运行: Unit → Integration → UI(仅冒烟)
 
-This prompt provides Claude Code with specific, actionable instructions for implementing TDD in a Swift/SwiftUI macOS app while incorporating the latest best practices from the research.
+此提示词提供了具体、可执行的指示,用于在 Swift/SwiftUI macOS 应用中实施 TDD,同时融入了研究得到的最新最佳实践。

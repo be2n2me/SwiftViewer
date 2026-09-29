@@ -2,7 +2,7 @@
 //  ViewLoggingIntegrationTests.swift
 //  SwiftViewerTests
 //
-//  Created by Claude Code on SwiftViewer Logger Cleanup Integration
+//  Created by be2n2me.
 //
 
 @testable import SwiftViewer

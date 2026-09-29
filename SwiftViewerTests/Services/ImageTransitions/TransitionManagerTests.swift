@@ -2,7 +2,7 @@
 //  TransitionManagerTests.swift
 //  SwiftViewerTests
 //
-//  Created by SwiftViewer Development Team.
+//  Created by be2n2me.
 //
 
 import XCTest

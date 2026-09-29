@@ -2,7 +2,7 @@
 //  WindowControllerTests.swift
 //  SwiftViewerTests
 //
-//  Created by Claude on 2025/08/28.
+//  Created by be2n2me.
 //
 
 import XCTest

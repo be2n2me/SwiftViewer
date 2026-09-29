@@ -2,7 +2,7 @@
 //  BlurredImageBackground.swift
 //  SwiftViewer
 //
-//  Created by SwiftViewer on 2025-08-26.
+//  Created by be2n2me.
 //
 
 import SwiftUI

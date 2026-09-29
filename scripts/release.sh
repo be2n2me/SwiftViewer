@@ -9,7 +9,7 @@ set -euo pipefail
 
 PROJECT="SwiftViewer.xcodeproj"
 SCHEME="SwiftViewer"
-TEAM_ID="TU59724Z2P"
+TEAM_ID="YOUR_TEAM_ID"
 KEYCHAIN_PROFILE="${NOTARY_PROFILE:-SwiftViewerNotary}"
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"

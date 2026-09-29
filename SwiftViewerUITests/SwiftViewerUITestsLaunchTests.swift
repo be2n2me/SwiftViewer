@@ -2,7 +2,7 @@
 //  SwiftViewerUITestsLaunchTests.swift
 //  SwiftViewerUITests
 //
-//  Created by sho kisaragi on 2025/08/21.
+//  Created by be2n2me.
 //
 
 import XCTest

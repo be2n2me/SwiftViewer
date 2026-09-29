@@ -2,7 +2,7 @@
 //  DependencyContainerTests.swift
 //  SwiftViewerTests
 //
-//  Created by Claude on 2025/03/13.
+//  Created by be2n2me.
 //
 
 import XCTest

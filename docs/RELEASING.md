@@ -8,7 +8,7 @@ required before the first run.
 
 ### 1. Developer ID Application certificate
 
-You need a **Developer ID Application** certificate for team `TU59724Z2P` in your login
+You need a **Developer ID Application** certificate for team `YOUR_TEAM_ID` in your login
 keychain (requires the Account Holder or Admin role in the Apple Developer Program):
 
 - Xcode → **Settings** → **Accounts** → select the team → **Manage Certificates…**
@@ -34,8 +34,8 @@ xcrun notarytool store-credentials SwiftViewerNotary \
 
 # Option B — Apple ID + app-specific password
 xcrun notarytool store-credentials SwiftViewerNotary \
-    --apple-id tak7650@gmail.com \
-    --team-id TU59724Z2P \
+    --apple-id be2n2me@gmail.com \
+    --team-id YOUR_TEAM_ID \
     --password <app-specific-password>
 ```
 
